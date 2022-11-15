@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生管理系统</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="/js/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <script>
+        var grade = document.getElementById("score")
+
+        function checkGrade() {
+            if (grade < 0 || grade > 100){
+                alert("成绩非法，重新输入 ！~")
+                return false;
+            }
+        }
+        checkGrade();
+    </script>
+</head>
+<body>
+    <div th:include="head :: head"></div>
+    <hr width="80%">
+    <center>
+    <form action="/insert" method="post">
+    <table class="table table-hover" style="width: 350px">
+        <tr>
+            <td align="right"> 姓名： </td>
+            <td align="center">
+                <input type="text" name="name" placeholder="-- 请输入姓名 --">
+            </td>
+        </tr>
+        <tr>
+            <td align="right"> 性别： </td>
+            <td align="center">
+                男<input type="radio" name="sex" value="1"> |
+                女<input type="radio" name="sex" value="0">
+            </td>
+        </tr>
+        <tr>
+            <td align="right"> 年龄： </td>
+            <td align="center">
+                <input type="text" name="age" placeholder="-- 请输入年龄 --">
+            </td>
+        </tr>
+        <tr>
+            <td align="right"> 分数： </td>
+            <td align="center">
+                <input type="text" name="score" id="score" placeholder="-- 请输入成绩 --">
+            </td>
+        </tr>
+        <tr>
+            <td align="right"> 电话： </td>
+            <td align="center">
+                <input type="text" name="tel" placeholder="-- 请输入电话 --">
+            </td>
+        </tr>
+        <tr>
+            <td align="right"> 班级： </td>
+            <td align="center">
+                <input type="text" name="classid" placeholder="-- 请输入班级 --">
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2">
+            <input type="submit">  |
+            <input type="reset">
+            </td>
+        </tr>
+    </table>
+    </form>
+    </center>
+</body>
+</html>

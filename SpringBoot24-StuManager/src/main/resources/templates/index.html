@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生管理系统</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="/js/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div th:include="head :: head"></div>
+
+    <hr width="80%">
+    <table class="table table-bordered">
+        <tr align="center">
+            <th> 学号 </th>
+            <th> 姓名 </th>
+            <th> 性别 </th>
+            <th> 年龄 </th>
+            <th> 成绩 </th>
+            <th> 电话 </th>
+            <th> 班级 </th>
+            <th> 编辑 </th>
+        </tr>
+        <tr th:each="stuList:${stuList}">
+            <td th:text="${stuList.getId()}"> 学号 </td>
+            <td th:text="${stuList.getName()}"> 姓名 </td>
+            <td th:text="${stuList.getSex() == '1' ? '男' : '女'}"> 性别 </td>
+            <td th:text="${stuList.getAge()}"> 年龄 </td>
+            <td th:text="${stuList.getScore()}"> 成绩 </td>
+            <td th:text="${stuList.getTel()}"> 电话 </td>
+            <td th:text="${stuList.getClassid()}"> 班级 </td>
+            <td align="center" colspan="2">
+                <a th:href="'/edit?id=' + ${stuList.id}"> 编辑 </a> |
+                <a th:href="'/delete?id=' + ${stuList.id}"> 删除 </a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
